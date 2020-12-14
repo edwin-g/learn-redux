@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { UPDATE_TODO_ACTION } from "../store/todoReducer";
+import { toggleTodoAction } from "../store/todoActions";
+import { todoSelector } from "../store/todoSelectors";
 
 function TodoItem({ todo, onToggle }) {
   return (
@@ -8,7 +9,7 @@ function TodoItem({ todo, onToggle }) {
         <input
           type="checkbox"
           checked={todo.completed}
-          onChange={() => onToggle(todo)} // 1. onToggle is triggered when modification on the checkbox
+          onChange={() => onToggle(todo)}
         />
         {todo.title}
       </label>
@@ -26,16 +27,13 @@ export function TodoList({ todos, onToggle }) {
   );
 }
 
+// By using todoSelector() & toggleTodoAction() functions, i can export the logic
+// and making change easly if it's in several component.
 export const TodoListStore = connect(
   (state) => ({
-    todos: state.todos,
+    todos: todoSelector(state),
   }),
   (dispatch) => ({
-    // 2. Giving to TodoList as a props the onToggle dispatch
-    onToggle: (todo) =>
-      dispatch({
-        type: UPDATE_TODO_ACTION,
-        payload: { ...todo, completed: !todo.completed },
-      }),
+    onToggle: (todo) => dispatch(toggleTodoAction(todo)),
   })
 )(TodoList);
