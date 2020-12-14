@@ -18,8 +18,17 @@ function TodoItem({ todo, onToggle }) {
   );
 }
 
-export function TodoList() {
-  // Use of hooks to connect the component to the store
+export function TodoList({ todos, onToggle }) {
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem todo={todo} onToggle={onToggle} key={todo.id} />
+      ))}
+    </ul>
+  );
+}
+
+export function TodoListStore() {
   const todos = useSelector(todoSelector);
   const dispatch = useDispatch();
   const onToggle = useCallback(
@@ -28,14 +37,7 @@ export function TodoList() {
     },
     [dispatch]
   );
-
-  return (
-    <ul>
-      {todos.map((todo) => (
-        <TodoItem todo={todo} onToggle={onToggle} key={todo.id} />
-      ))}
-    </ul>
-  );
+  return <TodoList todos={todos} onToggle={onToggle} />;
 }
 
 // By using todoSelector() & toggleTodoAction() functions, i can export the logic
