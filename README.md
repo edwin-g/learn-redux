@@ -8,4 +8,6 @@ Tutorial : <https://www.youtube.com/watch?v=QLiox52HG4U>
    1. Create src/store
    2. npm install react-redux
    3. Make the redux store available to react with `<Provider />`
-   4. Use of connect() to expose the store to a component for accessing data or trigger a dispatch
+   4. Use of connect() to expose the store to a component for accessing data with selectors
+   5. Use of connect() to expose the store to a component for trigger a dispatch
+   6. Dispatch take action that is use by reducer
