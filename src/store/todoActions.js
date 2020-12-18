@@ -1,3 +1,4 @@
+import { wait } from "../wait";
 import {
   ADD_TODO_ACTION,
   UPDATE_TODO_ACTION,
@@ -14,7 +15,15 @@ export const deleteTodoAction = (todo) => ({
   payload: todo.id,
 });
 
-export const addTodoAction = (title) => ({
-  type: ADD_TODO_ACTION,
-  payload: { title },
-});
+export const addTodoAction = (title) => async (dispatch) => {
+  await wait(2000);
+  dispatch({
+    type: ADD_TODO_ACTION,
+    payload: { title },
+  });
+};
+
+// export const addTodoAction = (title) => ({
+//   type: ADD_TODO_ACTION,
+//   payload: { title },
+// });
