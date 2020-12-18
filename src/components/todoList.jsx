@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTodoAction, deleteTodoAction } from "../store/todoActions";
-import { todoSelector, filteredTodosSelectors } from "../store/todoSelectors";
+import { filteredTodosSelectors } from "../store/todoSelectors";
 
 function TodoItem({ todo, onToggle, onDelete }) {
   return (
