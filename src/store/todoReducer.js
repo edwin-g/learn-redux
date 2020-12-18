@@ -9,7 +9,27 @@ const initialState = [
   {
     id: id++,
     title: "Prepare the tutorial",
-    completed: true,
+    completed: false,
+  },
+  {
+    id: id++,
+    title: "Prepare the tutorial",
+    completed: false,
+  },
+  {
+    id: id++,
+    title: "Prepare the tutorial",
+    completed: false,
+  },
+  {
+    id: id++,
+    title: "Prepare the tutorial",
+    completed: false,
+  },
+  {
+    id: id++,
+    title: "Prepare the tutorial",
+    completed: false,
   },
 ];
 
